@@ -9,9 +9,14 @@ get '/messages' do
 end
 
 get '/messages/new' do
+  @message = Message.new
   erb :'messages/new'
 end
 
+get '/messages/:id' do
+  @message = Message.find params[:id]
+  erb :'messages/show'
+end
 
 post '/messages' do
   @message = Message.new(
@@ -29,7 +34,4 @@ post '/messages' do
   end
 end
 
-get '/messages/:id' do
-  @message = Message.find params[:id]
-  erb :'messages/show'
-end
+ 
